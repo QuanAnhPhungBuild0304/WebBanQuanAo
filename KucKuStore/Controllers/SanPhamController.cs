@@ -16,21 +16,25 @@ namespace KucKuStore.Controllers
             ViewBag.DANHMUC = new DANHMUCF().DanhMUcs.ToList();
             return View();
         }
-        public ActionResult Ao()
+        public ActionResult Ao(string id)
         {
-            return View();
+            var model = new SANPHAMF().DSSanPham.Where(x => x.MADM.Contains("A")).ToList();
+            return View(model);
         }
-        public ActionResult Quan()
+        public ActionResult Quan(string id)
         {
-            return View();
+            var model = new SANPHAMF().DSSanPham.Where(x => x.MADM.Contains("Q")).ToList();
+            return View(model);
         }
-        public ActionResult Vay()
+        public ActionResult Vay(string id)
         {
-            return View();
+            var model = new SANPHAMF().DSSanPham.Where(x => x.MADM.Contains("V")).ToList();
+            return View(model);
         }
         public ActionResult PhuKien()
         {
-            return View();
+            var model = new SANPHAMF().DSSanPham.Where(x => x.MADM.Contains("PK")).ToList();
+            return View(model);
         }
         public ActionResult ChiTietSP(string id)
         {

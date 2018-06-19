@@ -14,8 +14,6 @@ namespace KucKuStore.Controllers
         {
             var model = new SANPHAMF().DSSanPham.ToList();
             ViewBag.DANHMUC = new DANHMUCF().DanhMUcs.ToList();
-            ViewBag.Count = TempData["CountBag"];
-            TempData.Keep("CountBag");
             return View(model);
         }
 

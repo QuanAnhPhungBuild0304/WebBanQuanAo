@@ -1,10 +1,12 @@
-﻿ <!-- ##### Header Area Start ##### -->
+﻿@using KucKuStore.Models.Entities;
+
+<!-- ##### Header Area Start ##### -->
 <header class="header_area">
     <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
         <!-- Classy Menu -->
         <nav class="classy-navbar" id="essenceNav">
             <!-- Logo -->
-            <a class="nav-brand" href="/Home/Index"><img src="~/Content/img/core-img/kucku.png" alt=""></a>
+            <a class="nav-brand" href="/Home/Index"><img src="~/Content/img/core-img/2.jpg" alt=""></a>
             <!-- Navbar Toggler -->
             <div class="classy-navbar-toggler">
                 <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -19,45 +21,44 @@
                 <div class="classynav">
                     <ul>
                         <li>
-                            <a href="/SanPham/Shop">Mới</a>
-                            
+                            <a href="/SanPham/SpMoi">New Arrival</a>
+
                         </li>
                         <li>
-                            <a href="/SanPham/Ao">Áo</a>
+                            <a href="">Áo</a>
                             <ul class="dropdown">
-                                <li><a href="ChiTietSP.cshtml">Áo phông</a></li>
-                                <li><a href="shop.html">Áo sơ mi</a></li>
-                                <li><a href="shop.html">Áo ba lố</a></li>
-                                <li><a href="shop.html">Áo khoác</a></li>
-                                <li><a href="shop.html">Áo len</a></li>
+                                @foreach(var dm in ViewBag.DANHMUC1)
+                                       { 
+                                            <li><a href="/SanPham/Shop/@dm.MADM">@dm.TENDM</a></li>
+                                        }
                             </ul>
                         </li>
                         <li>
-                            <a href="/SanPham/Quan">Quần</a>
+                            <a href="">Quần</a>
                             <ul class="dropdown">
-                                <li><a href="shop.html">Quàn jeans</a></li>
-                                <li><a href="shop.html">Quần yếm</a></li>
-                                <li><a href="shop.html">Quần ống rộng</a></li>
-                                <li><a href="shop.html">Quần sooc</a></li>
-                                <li><a href="shop.html">Quần đùi</a></li>
+                                @foreach(var dm in ViewBag.DANHMUC2)
+                                       { 
+                                            <li><a href="/SanPham/Shop/@dm.MADM">@dm.TENDM</a></li>
+                                        }
                             </ul>
                         </li>
-                        
+
                         <li>
-                            <a href="/SanPham/Vay">Váy</a>
+                            <a href="">Váy</a>
                             <ul class="dropdown">
-                                <li><a href="shop.html">Váy ngắn</a></li>
-                                <li><a href="shop.html">Váy dài</a></li>
-                                <li><a href="shop.html">Chân váy ngắn</a></li>
-                                <li><a href="shop.html">Chân váy dài</a></li>
+                                @foreach(var dm in ViewBag.DANHMUC3)
+                                       { 
+                                            <li><a href="/SanPham/Shop/@dm.MADM">@dm.TENDM</a></li>
+                                        }
                             </ul>
                         </li>
                         <li>
-                            <a href="/SanPham/PhuKien">Phụ kiện</a>
+                            <a href="">Phụ kiện</a>
                             <ul class="dropdown">
-                                <li><a href="shop.html">Giày dép</a></li>
-                                <li><a href="shop.html">Túi xách</a></li>
-                                <li><a href="shop.html">Mũ</a></li>
+                               @foreach(var dm in ViewBag.DANHMUC4)
+                                       { 
+                                            <li><a href="/SanPham/Shop/@dm.MADM">@dm.TENDM</a></li>
+                                        }
                             </ul>
                         </li>
                     </ul>

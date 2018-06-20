@@ -13,5 +13,9 @@ namespace KucKuStore.Controllers
         {
             return View();
         }
+        public ActionResult ThanhToan()
+        {
+            return View();
+        }
     }
 }

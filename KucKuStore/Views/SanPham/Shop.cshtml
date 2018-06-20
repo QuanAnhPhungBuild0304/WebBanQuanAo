@@ -1,7 +1,7 @@
-﻿
+﻿@using KucKuStore.Models.Entities;
 @{
+    ViewBag.Title = "Shop" + Model.TENDM;
     Layout = "~/Views/Shared/LayoutIndex.cshtml";
-    ViewBag.Title = "Shop";
 }
 
 <!-- ##### Breadcumb Area Start ##### -->
@@ -10,11 +10,13 @@
         <div class="row h-100 align-items-center">
             <div class="col-12">
                 <div class="page-title text-center">
-                    <h2>sản phẩm mới</h2>
+                    <h2>@Model.TENDM</h2>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- ##### Breadcumb Area End ##### -->
-@Html.Partial("~/Views/Shared/CotDM.cshtml")
+<!-- ##### Shop Grid Area Start ##### -->
+@Html.Partial("~/Views/Shared/BodyListSP.cshtml")
+<!-- ##### Shop Grid Area End ##### -->

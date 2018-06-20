@@ -1,28 +1,28 @@
-﻿
+﻿@model KucKuStore.Models.Entities.SANPHAM
+
 @{
-    Layout = "~/Views/Shared/LayoutIndex.cshtml";
-    ViewBag.Title = "ChiTietSP";
+    ViewBag.Title = "ChiTietSP" + Model.TENSP;
+    Layout = "~/Views/Shared/LayoutIndex.cshtml";   
 }
 <!-- ##### Single Product Details Area Start ##### -->
 <section class="single_product_details_area d-flex align-items-center">
-
+        
     <!-- Single Product Thumb -->
     <div class="single_product_thumb clearfix">
         <div class="product_thumbnail_slides owl-carousel">
-            <img src="img/product-img/product-big-1.jpg" alt="">
-            <img src="img/product-img/product-big-2.jpg" alt="">
-            <img src="img/product-img/product-big-3.jpg" alt="">
+            <img src="~/Content/img/product-img/@Model.HINHANH" alt="">
+            <img src="~/Content/img/product-img/@Model.HINHANHKHAC" alt="">
         </div>
     </div>
 
     <!-- Single Product Description -->
     <div class="single_product_desc clearfix">
-        <span>mango</span>
+        <span>@Model.TRANGTHAI</span>
         <a href="cart.html">
-            <h2>One Shoulder Glitter Midi Dress</h2>
+            <h2>@Model.TENSP</h2>
         </a>
-        <p class="product-price"><span class="old-price">$65.00</span> $49.00</p>
-        <p class="product-desc">Mauris viverra cursus ante laoreet eleifend. Donec vel fringilla ante. Aenean finibus velit id urna vehicula, nec maximus est sollicitudin.</p>
+        <p class="product-price"><span class="old-price"> </span>@Model.GIA</p>
+        <p class="product-desc">@Model.MOTA</p>
 
         <!-- Form -->
         <form class="cart-form clearfix" method="post">

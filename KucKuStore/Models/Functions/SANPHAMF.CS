@@ -24,6 +24,15 @@ namespace KucKuStore.Models.Functions
         {
             return context.SANPHAMs.ToList();
         }
-
+        public List<SANPHAM> GetList1(string id)
+        {
+            return context.SANPHAMs.Where(x => x.MADM.Contains(id)).ToList();
+        }
+        // Trả về một đối tượng danh mục, khi biết Khóa
+        public SANPHAM FindEntity(string MaSP)
+        {
+            SANPHAM dbEntry = context.SANPHAMs.Find(MaSP);
+            return dbEntry;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿@using KucKuStore.Models.Entities;
+
 @{
     Layout = "~/Views/Shared/LayoutIndex.cshtml";
     ViewBag.Title = "Index";
@@ -12,7 +13,7 @@
                 <div class="hero-content">
                     <h6></h6>
                     <h2>New Arrival</h2>
-                    <a href="#" class="btn essence-btn">xem thêm</a>
+                    <a href="/SanPham/SPMoi" class="btn essence-btn">xem thêm</a>
                 </div>
             </div>
         </div>
@@ -86,7 +87,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="popular-products-slides owl-carousel">
-                    @foreach(var item in Model)
+                    @foreach (var item in Model)
                     {
                         <!-- Single Product -->
                         <div class="single-product-wrapper">
@@ -103,7 +104,7 @@
                             <!-- Product Description -->
                             <div class="product-description">
                                 <span>topshop</span>
-                                <a href="single-product-details.html">
+                                <a href="/SanPham/ChiTietSP/@item.MASP">
                                     <h6>@item.TENSP</h6>
                                 </a>
                                 <p class="product-price">@item.GIA</p>

@@ -1,16 +1,15 @@
 ﻿@using KucKuStore.Models.Entities;
 @{
-    ViewBag.Title = "Quan";
+    ViewBag.Title = "SPMoi";
     Layout = "~/Views/Shared/LayoutIndex.cshtml";
 }
-
 <!-- ##### Breadcumb Area Start ##### -->
 <div class="breadcumb_area bg-img" style="background-image: url(img/bg-img/breadcumb.jpg);">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
                 <div class="page-title text-center">
-                    <h2>Quần</h2>
+                    <h2>New Arrival</h2>
                 </div>
             </div>
         </div>
@@ -22,8 +21,64 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-4 col-lg-3">
+                <div class="shop_sidebar_area">
 
-                @Html.Partial("~/Views/Shared/CotDM.cshtml")
+                    <!-- ##### Single Widget ##### -->
+                    <div class="widget catagory mb-50">
+                        <!-- Widget Title -->
+                        <h6 class="widget-title mb-30">Mặt hàng</h6>
+
+                        <!--  Catagories  -->
+                        <div class="catagories-menu">
+                            <ul id="menu-content2" class="menu-content collapse show">
+                                <!-- Single Item -->
+                                <li data-toggle="collapse" data-target="#ao">
+                                    <a href="#">Áo</a>
+                                    <ul class="sub-menu collapse" id="ao">
+                                        @foreach (var dm in ViewBag.DANHMUC1)
+                                        {
+                                            <li><a href="/SanPham/Shop/@dm.MADM">@dm.TENDM</a></li>
+                                        }
+                                    </ul>
+
+                                </li>
+                                <!-- Single Item -->
+                                <li data-toggle="collapse" data-target="#quan" class="collapsed">
+                                    <a href="#">Quần</a>
+                                    <ul class="sub-menu collapse" id="quan">
+                                        @foreach (var dm in ViewBag.DANHMUC2)
+                                        {
+                                            <li><a href="/SanPham/Shop/@dm.MADM">@dm.TENDM</a></li>
+                                        }
+                                    </ul>
+                                </li>
+                                <!-- Single Item -->
+                                <li data-toggle="collapse" data-target="#cv" class="collapsed">
+                                    <a href="#">Váy</a>
+                                    <ul class="sub-menu collapse" id="cv">
+                                        @foreach (var dm in ViewBag.DANHMUC3)
+                                        {
+                                            <li><a href="/SanPham/Shop/@dm.MADM">@dm.TENDM</a></li>
+                                        }
+                                    </ul>
+                                </li>
+
+
+                                <!-- Single Item -->
+                                <li data-toggle="collapse" data-target="#phukien" class="collapsed">
+                                    <a href="#">Phụ kiện</a>
+                                    <ul class="sub-menu collapse" id="phukien">
+                                        @foreach (var dm in ViewBag.DANHMUC4)
+                                        {
+                                            <li><a href="/SanPham/Shop/@dm.MADM">@dm.TENDM</a></li>
+                                        }
+                                    </ul>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="col-12 col-md-8 col-lg-9">
@@ -76,7 +131,7 @@
                                     <!-- Product Description -->
                                     <div class="product-description">
                                         <span>@item.TRANGTHAI</span>
-                                        <a href="single-product-details.html">
+                                        <a href="/SanPham/ChiTietSP/@item.MASP">
                                             <h6>@item.TENSP</h6>
                                         </a>
                                         <p class="product-price"><span class="old-price">$75.00</span> @item.GIA</p>
@@ -85,7 +140,7 @@
                                         <div class="hover-content">
                                             <!-- Add to Cart -->
                                             <div class="add-to-cart-btn">
-                                                <a href="#" class="btn essence-btn">Thêm vào giỏ hàng</a>
+                                                <a href="/Cart/AddItem/@item.MASP " class="btn essence-btn">Thêm vào giỏ hàng</a>
                                             </div>
                                         </div>
                                     </div>
@@ -113,5 +168,4 @@
         </div>
     </div>
 </section>
-<!-- ##### Shop Grid Area End ##### -->
 <!-- ##### Shop Grid Area End ##### -->

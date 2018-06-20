@@ -206,6 +206,7 @@
     <Content Include="Content\img\bg-img\rp3.jpg" />
     <Content Include="Content\img\bg-img\rp4.jpg" />
     <Content Include="Content\img\bg-img\vay.jpg" />
+    <Content Include="Content\img\core-img\2.jpg" />
     <Content Include="Content\img\core-img\arrow-down.svg" />
     <Content Include="Content\img\core-img\arrow-left.svg" />
     <Content Include="Content\img\core-img\arrow-right.svg" />
@@ -221,9 +222,6 @@
     <Content Include="Content\img\core-img\favicon.ico" />
     <Content Include="Content\img\core-img\heart-fill.svg" />
     <Content Include="Content\img\core-img\heart.svg" />
-    <Content Include="Content\img\core-img\kucku.jpg" />
-    <Content Include="Content\img\core-img\logo.png" />
-    <Content Include="Content\img\core-img\logo2.png" />
     <Content Include="Content\img\core-img\long-arrow-left.svg" />
     <Content Include="Content\img\core-img\long-arrow-right.svg" />
     <Content Include="Content\img\core-img\pin.png" />
@@ -333,16 +331,13 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\SanPham\Shop.cshtml" />
     <Content Include="Views\SanPham\ChiTietSP.cshtml" />
-    <Content Include="Views\SanPham\ThanhToan.cshtml" />
     <Content Include="Views\SanPham\Ao.cshtml" />
-    <Content Include="Views\SanPham\Quan.cshtml" />
-    <Content Include="Views\SanPham\Vay.cshtml" />
-    <Content Include="Views\SanPham\PhuKien.cshtml" />
-    <Content Include="Views\Shared\CotDM.cshtml" />
+    <Content Include="Views\Shared\BodyListSP.cshtml" />
+    <Content Include="Views\Cart\ThanhToan.cshtml" />
+    <Content Include="Views\SanPham\SPMoi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

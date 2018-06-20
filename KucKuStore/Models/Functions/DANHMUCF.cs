@@ -20,5 +20,15 @@ namespace KucKuStore.Models.Functions
         {
             get { return context.DANHMUCs; }
         }
+        public List<DANHMUC> GetList1(string id)
+        {
+            return context.DANHMUCs.Where(x => x.MADM.Contains(id)).ToList();
+        }
+        // Trả về một đối tượng danh mục, khi biết Khóa
+        public DANHMUC FindEntity(string MaSP)
+        {
+            DANHMUC dbEntry = context.DANHMUCs.Find(MaSP);
+            return dbEntry;
+        }
     }
 }

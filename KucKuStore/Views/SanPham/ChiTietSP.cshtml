@@ -1,0 +1,58 @@
+﻿@model KucKuStore.Models.Entities.SANPHAM
+
+@{
+    ViewBag.Title = "ChiTietSP" + Model.TENSP;
+    Layout = "~/Views/Shared/LayoutIndex.cshtml";   
+}
+<!-- ##### Single Product Details Area Start ##### -->
+<section class="single_product_details_area d-flex align-items-center">
+        
+    <!-- Single Product Thumb -->
+    <div class="single_product_thumb clearfix">
+        <div class="product_thumbnail_slides owl-carousel">
+            <img src="~/Content/img/product-img/@Model.HINHANH" alt="">
+            <img src="~/Content/img/product-img/@Model.HINHANHKHAC" alt="">
+        </div>
+    </div>
+
+    <!-- Single Product Description -->
+    <div class="single_product_desc clearfix">
+        <span>@Model.TRANGTHAI</span>
+        <a href="cart.html">
+            <h2>@Model.TENSP</h2>
+        </a>
+        <p class="product-price"><span class="old-price"> </span>@Model.GIA</p>
+        <p class="product-desc">@Model.MOTA</p>
+
+        <!-- Form -->
+        <form class="cart-form clearfix" method="post">
+            <!-- Select Box -->
+            <div class="select-box d-flex mt-50 mb-30">
+                <select name="select" id="productSize" class="mr-5">
+                    <option value="value">Size: XL</option>
+                    <option value="value">Size: X</option>
+                    <option value="value">Size: M</option>
+                    <option value="value">Size: S</option>
+                </select>
+                <select name="select" id="productColor">
+                    <option value="value">Color: Black</option>
+                    <option value="value">Color: White</option>
+                    <option value="value">Color: Red</option>
+                    <option value="value">Color: Purple</option>
+                </select>
+            </div>
+            <!-- Cart & Favourite Box -->
+            <div class="cart-fav-box d-flex align-items-center">
+                <!-- Cart -->
+                <button type="submit" name="addtocart" value="5" class="btn essence-btn">Thêm vào giỏ hàng</button>
+
+                <a href="/Cart/AddItem/@Model.MASP" class="btn essence-btn">xem thêm</a>
+                <!-- Favourite -->
+                <div class="product-favourite ml-4">
+                    <a href="#" class="favme fa fa-heart"></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- ##### Single Product Details Area End ##### -->

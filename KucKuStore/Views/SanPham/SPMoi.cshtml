@@ -1,10 +1,13 @@
 ﻿@using KucKuStore.Models.Entities;
+@using PagedList.Mvc;
+@model PagedList.PagedList<SANPHAM>
+
 @{
     ViewBag.Title = "SPMoi";
     Layout = "~/Views/Shared/LayoutIndex.cshtml";
 }
 <!-- ##### Breadcumb Area Start ##### -->
-<div class="breadcumb_area bg-img" style="background-image: url(img/bg-img/breadcumb.jpg);">
+<div class="breadcumb_area bg-img" style="background-image: url(/Content/img/bg-img/breadcumb.jpg);">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -88,7 +91,9 @@
                             <div class="product-topbar d-flex align-items-center justify-content-between">
                                 <!-- Total Products -->
                                 <div class="total-products">
-                                    <p><span>186</span> products found</p>
+                                    <div style="display:table; color:darkgray; padding-left :20px;">
+                                        @Html.PagedListPager(Model, page => Url.Action("SPMoi", new { page = page }))
+                                    </div>
                                 </div>
                                 <!-- Sorting -->
                                 <div class="product-sorting d-flex">
@@ -153,19 +158,27 @@
                     </div>
                 </div>
                 <!-- Pagination -->
+
                 <nav aria-label="navigation">
+
+                    <div style="display :inline-grid; color:darkgray; font-size:50px;">
+                        @Html.PagedListPager(Model, page => Url.Action("SPMoi", new { page = page }))
+                    </div>
+
                     <ul class="pagination mt-50 mb-70">
+
                         <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">...</a></li>
-                        <li class="page-item"><a class="page-link" href="#">21</a></li>
+                        <li class="page-item"><a class="page-link" href="#">@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount</a></li>
+
                         <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </div>
+    
+   
+    
+    
 </section>
 <!-- ##### Shop Grid Area End ##### -->

@@ -16,17 +16,20 @@ namespace KucKuStore.Models.Entities
         }
 
         [Key]
-        [StringLength(10)]
-        public string MASP { get; set; }
+        public int MASP { get; set; }
 
         [StringLength(200)]
         public string TENSP { get; set; }
+
+        public int? GIA { get; set; }
+
+        public int? GIAMGIA { get; set; }
 
         [StringLength(10)]
         public string MADM { get; set; }
 
         [StringLength(500)]
-        public string MOTA { get; set; }
+        public string CHITIET { get; set; }
 
         [StringLength(200)]
         public string HINHANH { get; set; }
@@ -34,29 +37,18 @@ namespace KucKuStore.Models.Entities
         [Column(TypeName = "xml")]
         public string HINHANHKHAC { get; set; }
 
-        public int? GIA { get; set; }
-
-        public string CHITIET { get; set; }
-
         public int? SOLUONG { get; set; }
 
-        [StringLength(200)]
-        public string TRANGTHAI { get; set; }
+        public DateTime? NGAYNHAP { get; set; }
 
-        public DateTime? SPHOT { get; set; }
-
-        [StringLength(50)]
-        public string MAUSAC { get; set; }
-
-        [StringLength(10)]
-        public string KICHCO { get; set; }
-
-        [StringLength(50)]
-        public string THUONGHIEU { get; set; }
+        [StringLength(30)]
+        public string MANCC { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDONHANG> CTDONHANGs { get; set; }
 
         public virtual DANHMUC DANHMUC { get; set; }
+
+        public virtual NHACC NHACC { get; set; }
     }
 }

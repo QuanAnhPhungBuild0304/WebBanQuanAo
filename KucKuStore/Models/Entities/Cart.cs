@@ -32,10 +32,7 @@ namespace KucKuStore.Models.Entities
             else
             {
                 line.Quantity += quantity;
-                if (line.Quantity <= 0)
-                {
-                    lineCollection.RemoveAll(l => l.SANPHAM.MASP == sp.MASP);
-                }
+                
             }
         }
         public void UpdateItem(SANPHAM sp, int quantity)

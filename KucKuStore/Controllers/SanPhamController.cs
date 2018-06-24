@@ -38,7 +38,7 @@ namespace KucKuStore.Controllers
             int pageNum = (page ?? 1);
             return View(model.OrderBy(n=>n.GIA).ToPagedList(pageNum, pageSize));
         }
-        public ActionResult ChiTietSP(string id)
+        public ActionResult ChiTietSP(int id)
         {
             ViewBag.DANHMUC1 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("A")).ToList();
             ViewBag.DANHMUC2 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("Q")).ToList();

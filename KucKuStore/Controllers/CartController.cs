@@ -26,16 +26,21 @@ namespace KucKuStore.Controllers
 
             if (cart != null)
             {
-                ViewBag.list = cart.Lines.ToList();
-                ViewBag.Count = cart.Lines.Count();
+                //ViewBag.list = cart.Lines.ToList();
+                //ViewBag.Count = cart.Lines.Count();
                 TempData["CountBag"] = ViewBag.Count;
                 TempData.Keep("CountBag");
                 ViewBag.TongTien = cart.ComputeTotalValue();
+
+                if (cart.Lines != null)
+                {
+                    list = cart.Lines.ToList();
+                }                
             }
 
-            return View(list);
+            return View(list.ToList());
         }
-        public ActionResult AddItem(string Id, string returnURL)
+        public ActionResult AddItem(int Id, string returnURL)
         {
 
             var product = new SANPHAMF().FindEntity(Id);

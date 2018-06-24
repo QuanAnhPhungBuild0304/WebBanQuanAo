@@ -16,13 +16,7 @@ namespace KucKuStore.Models.Entities
         }
 
         [Key]
-        [StringLength(10)]
-        public string MADH { get; set; }
-
-        public DateTime? NGAYTAO { get; set; }
-
-        [StringLength(10)]
-        public string MAKH { get; set; }
+        public int MADH { get; set; }
 
         [StringLength(250)]
         public string TENKH { get; set; }
@@ -37,6 +31,11 @@ namespace KucKuStore.Models.Entities
         public string EMAIL { get; set; }
 
         public bool? TRANGTHAI { get; set; }
+
+        public DateTime? NGAYTAO { get; set; }
+
+        [StringLength(500)]
+        public string GHICHU { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDONHANG> CTDONHANGs { get; set; }

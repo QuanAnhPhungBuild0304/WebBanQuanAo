@@ -11,18 +11,17 @@ namespace KucKuStore.Models.Entities
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(10)]
-        public string MACT { get; set; }
+        public int MACT { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(10)]
-        public string MADH { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int MADH { get; set; }
 
         [Key]
         [Column(Order = 2)]
-        [StringLength(10)]
-        public string MASP { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int MASP { get; set; }
 
         public int? SL { get; set; }
 

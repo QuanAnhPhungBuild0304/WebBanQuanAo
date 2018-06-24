@@ -18,23 +18,11 @@ namespace KucKuStore.Models.Entities
         public virtual DbSet<KHUYENMAI> KHUYENMAIs { get; set; }
         public virtual DbSet<LIENHE> LIENHEs { get; set; }
         public virtual DbSet<NGUOIDUNG> NGUOIDUNGs { get; set; }
+        public virtual DbSet<NHACC> NHACCs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
-        public virtual DbSet<SLIDER> SLIDERs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CTDONHANG>()
-                .Property(e => e.MACT)
-                .IsFixedLength();
-
-            modelBuilder.Entity<CTDONHANG>()
-                .Property(e => e.MADH)
-                .IsFixedLength();
-
-            modelBuilder.Entity<CTDONHANG>()
-                .Property(e => e.MASP)
-                .IsFixedLength();
-
             modelBuilder.Entity<DANHMUC>()
                 .Property(e => e.MADM)
                 .IsFixedLength();
@@ -42,14 +30,6 @@ namespace KucKuStore.Models.Entities
             modelBuilder.Entity<DANHMUC>()
                 .Property(e => e.TIEUDENGAN)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<DONHANG>()
-                .Property(e => e.MADH)
-                .IsFixedLength();
-
-            modelBuilder.Entity<DONHANG>()
-                .Property(e => e.MAKH)
-                .IsFixedLength();
 
             modelBuilder.Entity<DONHANG>()
                 .Property(e => e.DIENTHOAI)
@@ -81,29 +61,21 @@ namespace KucKuStore.Models.Entities
                 .IsFixedLength();
 
             modelBuilder.Entity<NGUOIDUNG>()
-                .Property(e => e.QUYEN)
+                .Property(e => e.MAIL)
                 .IsFixedLength();
 
-            modelBuilder.Entity<SANPHAM>()
-                .Property(e => e.MASP)
-                .IsFixedLength();
+            modelBuilder.Entity<NHACC>()
+                .Property(e => e.SDT)
+                .IsUnicode(false);
 
             modelBuilder.Entity<SANPHAM>()
                 .Property(e => e.MADM)
                 .IsFixedLength();
 
             modelBuilder.Entity<SANPHAM>()
-                .Property(e => e.KICHCO)
-                .IsFixedLength();
-
-            modelBuilder.Entity<SANPHAM>()
                 .HasMany(e => e.CTDONHANGs)
                 .WithRequired(e => e.SANPHAM)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<SLIDER>()
-                .Property(e => e.MASD)
-                .IsFixedLength();
         }
     }
 }

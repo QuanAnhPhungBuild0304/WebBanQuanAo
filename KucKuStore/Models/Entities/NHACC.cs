@@ -1,4 +1,4 @@
-namespace KucKuStore.Models.Entities
+﻿namespace KucKuStore.Models.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -17,22 +17,30 @@ namespace KucKuStore.Models.Entities
 
         [Key]
         [StringLength(30)]
+        [Display(Name = "Mã Nhà cung cấp")]
+        // validate check cho hệ thống.
+        [Required(ErrorMessage = "Không để trống")]
         public string MANCC { get; set; }
 
-        [Required]
+        
         [StringLength(50)]
+        [Display(Name = "Tên Nhà cung cấp")]
+        // validate check cho hệ thống.
+        [Required(ErrorMessage = "Không để trống")]
         public string TENNCC { get; set; }
 
-        [Required]
+       
         [StringLength(50)]
-        public string LOGO { get; set; }
-
-        [Required]
-        [StringLength(50)]
+        [Display(Name = "Mail")]
+        // validate check cho hệ thống.
+        [Required(ErrorMessage = "Không để trống")]
         public string EMAIL { get; set; }
 
-        [Required]
+  
         [StringLength(10)]
+        [Display(Name = "SĐT")]
+        // validate check cho hệ thống.
+        [Required(ErrorMessage = "Không để trống")]
         public string SDT { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

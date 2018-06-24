@@ -21,5 +21,23 @@ namespace KucKuStore.Areas.Admin.Controllers
 
             return View(db.DANHMUCs.ToList().OrderBy(a => a.TENDM).ToPagedList(pageNumb, pageSize));
         }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(DANHMUC dm)
+        {
+            if (ModelState.IsValid)
+            {
+                // chèn dũ liệu vào bảng nguoidung trong model
+                db.DANHMUCs.Add(dm);
+                // lưu vào csdl
+                db.SaveChanges();
+            }
+            return View();
+        }
     }
 }

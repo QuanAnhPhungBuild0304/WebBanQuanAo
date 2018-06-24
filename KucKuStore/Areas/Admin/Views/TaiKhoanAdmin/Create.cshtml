@@ -12,7 +12,10 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>NGUOIDUNG</h4>
+        <div style="margin-right:100px">
+            <h4>Người dùng</h4>
+        </div>
+      
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -52,5 +55,5 @@
 }
     
     <div style="margin-top:150px">
-        @Html.ActionLink("Quay về", "Index")
+        @Html.ActionLink("Xem Danh sách", "Index")
     </div>

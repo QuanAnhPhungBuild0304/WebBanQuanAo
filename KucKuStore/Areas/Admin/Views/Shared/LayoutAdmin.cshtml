@@ -27,6 +27,11 @@
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
     @*Chèn css font kí tự*@
     <link href="~/Areas/Admin/Content/fontawesome-free-5.1.0-web/css/v4-shims.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/fontawesome-free-5.1.0-web/css/fontawesome.css" rel="stylesheet" />
+
+    @*chèn scripEditor*@
+    <script src="~/Areas/Admin/Content/tinymce_4.7.13/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
 </head>
 <body>
     <!-- Left Panel -->
@@ -45,12 +50,12 @@
                     <h3 class="menu-title">CÁC BẢNG TRONG CSDL</h3><!-- /.menu-title -->
 
                     <li class="menu-item-has-children ">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i> Tài Khoản</a>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Danh Mục</a>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i> @Html.ActionLink("Sản Phẩm", "Index", "SanPhamAdmin") </a>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Đơn Hàng</a>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Chi Tiết Đơn Hàng</a>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
+                        <a href="@Url.Action("Index","TaiKhoanAdmin")"> <i class="fas fa-user-circle"></i> Tài Khoản</></a>
+                        <a href="@Url.Action("Index","NhaCCAdmin")"> <i class="menu-icon fa fa-table"></i> Nhà Cung Cấp</></a>
+                        <a href="@Url.Action("Index","DanhMucAdmin")"> <i class="menu-icon fa fa-table"></i> Danh Mục</></a>
+                        <a href="@Url.Action("Index","SanPhamAdmin")"> <i class="menu-icon fa fa-table"></i> Sản Phẩm</></a>
+                        <a href="@Url.Action("Index","SanPhamAdmin")"> <i class="menu-icon fa fa-table"></i> Đơn Hàng</></a>
+                        <a href="@Url.Action("Index","SanPhamAdmin")"> <i class="menu-icon fa fa-table"></i> Sản Phẩm</></a>
 
                     </li>
 

@@ -17,7 +17,7 @@
                 <div class="card-header">
                     <strong>SẢN PHẨM</strong>
                     <h3>
-                        @Html.ActionLink("Thêm mới", "Create New", "Created")
+                        @Html.ActionLink("Thêm mới", "Create")
                     </h3>
                 </div>
                 <div class="card-body">
@@ -79,10 +79,15 @@
                                 @Html.DisplayFor(modelItem => item.GIAMGIA)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.HINHANH)
+                                @*@Html.DisplayFor(modelItem => item.HINHANH)*@
+                                <div id="AnhBia">
+                                    <img src="@Url.Content("~/Content/img/product-img/" +item.HINHANH)" width="100px" height="100px"/>
+                                </div>
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.HINHANHKHAC)
+                                <div id="AnhBia1">
+                                    <img src="@Url.Content("~/Content/img/product-img/" +item.HINHANHKHAC)" width="100px" height="100px" />
+                                </div>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.GIA)
@@ -103,9 +108,9 @@
                             </td>
 
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.MASP }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.MASP }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.MASP })
+                                @Html.ActionLink("Chỉnh sửa", "Edit", new { @MASP = item.MASP }) |
+                                @Html.ActionLink("Xem chi tiết", "HienThi", new { @MASP = item.MASP }) |
+                                @Html.ActionLink("Xóa", "Xoa", new { @MASP = item.MASP })
                             </td>
                         </tr>
                         }
@@ -116,20 +121,9 @@
     </div>
 </div><!-- .animated -->
 
-<ul class="pagination">
-    <li class="paginate_button page-item previous" id="bootstrap-data-table_previous">
-        <a href="#" aria-controls="bootstrap-data-table" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-    </li>
 
     @Html.PagedListPager(Model, pageTemp => Url.Action("Index", new { pageTemp = pageTemp }), new PagedListRenderOptions()
 {
     LiElementClasses = new List<string> { "tav_button", "tav_item" }
 })
-    <li class="paginate_button page-item ">
-        <a href="#" aria-controls="bootstrap-data-table" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-    </li>
 
-    <li class="paginate_button page-item next" id="bootstrap-data-table_next">
-        <a href="#" aria-controls="bootstrap-data-table" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-    </li>
-</ul>

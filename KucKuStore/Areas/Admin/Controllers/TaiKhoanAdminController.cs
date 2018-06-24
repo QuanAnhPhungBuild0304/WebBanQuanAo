@@ -29,7 +29,7 @@ namespace KucKuStore.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+       
         public ActionResult Create(NGUOIDUNG acc)
         {
             if (ModelState.IsValid)

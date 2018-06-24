@@ -6,12 +6,6 @@
     Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
 
 <div class="animated fadeIn">
     <div class="row">
@@ -20,7 +14,7 @@
                 <div class="card-header">
                     <strong>SẢN PHẨM</strong>
                     <h3>
-                        @Html.ActionLink("Thêm mới", "Create New", "Created")
+                        @Html.ActionLink("Thêm mới", "Create", "DanhMucAdmin")
                     </h3>
                 </div>
                 <div class="card-body">
@@ -66,15 +60,9 @@
     </div>
 </div><!-- .animated -->
 
-<ul class="pagination">
-    <li class="paginate_button page-item previous" id="bootstrap-data-table_previous">
-        <a href="#" aria-controls="bootstrap-data-table" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-    </li>
 
     @Html.PagedListPager(Model, pageTemp => Url.Action("Index", new { pageTemp = pageTemp }), new PagedListRenderOptions()
 {
     LiElementClasses = new List<string> { "tav_button", "tav_item" }
 })
-    <li class="paginate_button page-item ">
-        <a href="#" aria-controls="bootstrap-data-table" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-    </li>
+  

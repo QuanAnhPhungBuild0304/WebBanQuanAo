@@ -19,5 +19,23 @@ namespace KucKuStore.Areas.Admin.Controllers
 
             return View(db.NHACCs.ToList().OrderBy(a => a.TENNCC).ToPagedList(pageNumb, pageSize));
         }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(NHACC ncc)
+        {
+            if (ModelState.IsValid)
+            {
+                db.NHACCs.Add(ncc);
+
+                db.SaveChanges();
+            }
+            return View();
+        }
+
     }
 }

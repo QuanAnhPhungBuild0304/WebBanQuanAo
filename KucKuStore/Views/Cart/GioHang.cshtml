@@ -20,63 +20,61 @@
 <!-- ##### Breadcumb Area End ##### -->
 
 <div class="cart">
+    <form >
     <div class="container">
         @if (Model != null && Model.Count > 0)
-        {
-            <table class="table">
-                <thead style="background-color: #e4e1e1;">
-                    <tr>
-                        <th width="12%">Mã Sản Phẩm</th>
-                        <th width="20%">Tên Sản Phẩm</th>
-                        <th width="15%">Hình Ảnh</th>
-                        <th width="10%">Số Lượng</th>
-                        <th width="10%" style="text-align: right">Giá</th>
-                        <th width="10%" style="text-align: right">Tổng Tiền</th>
-                        <th width="15%">Chú Thích</th>
-                        <th width="10%">Trạng Thái</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@item.SANPHAM.MASP</td>
-                            <td>@item.SANPHAM.TENSP</td>
-                            <td><img src="/Content/img/product-img/item.SANPHAM.HINHANH" alt="img" style="width: 30px; height: 35px;"></td>
-                            <td>
-                                <input type="number" name="txtQuantity" style="padding-left: 5px" id="qty" min="1" max="12" value="@item.Quantity" title="Số lượng" class="input-text" disabled>
-                            </td>
-                            <td style="text-align: right">@(item.SANPHAM.GIA.GetValueOrDefault(0).ToString("0,0"))</td>
-                            <td style="text-align: right">@((item.SANPHAM.GIA.GetValueOrDefault(0) * item.Quantity).ToString("0,0"))</td>
-                            <td>CHú Thích</td>
-                            <td>
-                                <a href="#"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                <a href="/Cart/RemoveLine/@item.SANPHAM.MASP" data-id="@item.SANPHAM.MASP"><i class="fa fa-close" aria-hidden="true"></i></a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-            <hr>
-            <div class="total-count">
-                <h5 class="float-left">Tổng Số SP:<span>@Model.Count sản Phẩm </span></h5>
-                <a href="/Cart/Clear" style="float: right; padding-right: 20px;">Xóa Đơn Hàng!</a>
-                <h5 class="float-right" style="padding-right: 6.5%">Tổng Giá Trị Đơn Hàng:<span> @(ViewBag.TongTien.ToString("0,0")) VND</span></h5>
-            </div>
-            <div class="clearfix"></div>
-            <hr>
-            <a href="@Url.Action("ThanhToan","Cart")" class="buy-now">Hoàn Tất Mua Sắm <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-            <a href="@Url.Action("Index","Home")" class="buy-continue"><i class="fa fa-arrow-left" aria-hidden="true"></i> Tiếp Tục Mua Hàng </a>
-        }
-        else
-        {
-            <br /> <br /><br /><br /> <br /><br />
-            <h3>Không có sản phẩm nào trong giỏ hàng!</h3>
-            <br /> <br /><br /><br /> <br />
-        }
+    {
+        <table class="table">
+            <thead style="background-color: #e4e1e1;">
+                <tr>
+                    <th width="12%">Mã Sản Phẩm</th>
+                    <th width="25%">Tên Sản Phẩm</th>
+                    <th width="15%">Hình Ảnh</th>
+                    <th width="8%">Số Lượng</th>
+                    <th width="10%" style="text-align: right">Giá</th>
+                    <th width="12%" style="text-align: right">Tổng Tiền</th>
+                    <th width="10%">Trạng Thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.SANPHAM.MASP</td>
+                    <td>@item.SANPHAM.TENSP</td>
+                    <td><img src="/Content/img/product-img/@item.SANPHAM.HINHANH" alt="img" style="width: 70px; height: 90px;"></td>
+                    <td>
+                        <input type="number" name="txtQuantity" style="padding-left: 5px" id="qty" min="1" max="@item.SANPHAM.SOLUONG" value="@item.Quantity" title="Số lượng" class="input-text" enabled>
+                    </td>
+                    <td style="text-align: right" class="product-price"><strike class="old-price">@item.SANPHAM.GIA</strike> @(item.SANPHAM.GIA - item.SANPHAM.GIA * item.SANPHAM.GIAMGIA / 100)</td>
+                    <td style="text-align: right">@(((item.SANPHAM.GIA - item.SANPHAM.GIA * item.SANPHAM.GIAMGIA / 100).GetValueOrDefault(0) * item.Quantity).ToString("0,0"))</td>
 
+                    <td>
+                        <a href="/Cart/UpdateCart/@item.SANPHAM.MASP"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        <a href="/Cart/RemoveLine/@item.SANPHAM.MASP" data-id="@item.SANPHAM.MASP"><i class="fa fa-close" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+        <hr>
+        <div class="total-count">
+            <h5 class="float-left" style="font-size: 18px">Tổng số sản phẩm:<span>  @Model.Count sản Phẩm </span></h5>
+            <a href="/Cart/Clear" style="float: right; padding-right: 20px;">Xóa Đơn Hàng!</a>
+            <h5 class="float-right" style="padding-right: 6.5%">Tổng Giá Trị Đơn Hàng:<span> @(ViewBag.TongTien.ToString("0,0")) VND</span></h5>
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+        <a href="@Url.Action("ThanhToan","Cart")" class="btn essence-btn" style=" text-align:center">Thanh toán</a><br /><br />
+}
+else
+{
+    <br /> <br /><br /><br /> <br /><br />
+    <h3>Không có sản phẩm nào trong giỏ hàng!</h3>
+    <br /> <br /><br /><br /> <br />
+}
     </div>
-
+        </form>
 </div>
 <div class="clearfix"></div>
 

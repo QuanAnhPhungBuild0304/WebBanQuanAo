@@ -13,6 +13,7 @@ namespace KucKuStore.Controllers
     public class SanPhamController : Controller
     {
         // GET: SanPham
+        private const string CartSession = "CartSession";
         public ActionResult Shop(string id)
         {
             var item = new DANHMUCF().FindEntity(id);
@@ -22,6 +23,14 @@ namespace KucKuStore.Controllers
             ViewBag.DANHMUC3 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("V")).ToList();
             ViewBag.DANHMUC4 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("PK")).ToList();
             ViewBag.SANPHAM1 = new SANPHAMF().DSSanPham.Where(x => x.MADM.Contains(id)).ToList();
+            
+            var cart = (Cart)Session[CartSession];
+            if (cart != null)
+            {
+                ViewBag.Count = cart.Lines.Count();
+            }
+            else ViewBag.Count = 0;
+                
 
             return View(item);
         }
@@ -32,6 +41,14 @@ namespace KucKuStore.Controllers
             ViewBag.DANHMUC3 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("V")).ToList();
             ViewBag.DANHMUC4 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("PK")).ToList();
             var model = new SANPHAMF().DSSanPham.ToList();
+
+
+            var cart = (Cart)Session[CartSession];
+            if (cart != null)
+            {
+                ViewBag.Count = cart.Lines.Count();
+            }
+            else ViewBag.Count = 0;
 
             //Phân trang
             int pageSize = 9;
@@ -46,8 +63,13 @@ namespace KucKuStore.Controllers
             ViewBag.DANHMUC4 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("PK")).ToList();
             var model = new SANPHAMF().FindEntity(id);
 
-            ViewBag.Count = TempData["CountBag"];
-            TempData.Keep("CountBag");
+
+            var cart = (Cart)Session[CartSession];
+            if (cart != null)
+            {
+                ViewBag.Count = cart.Lines.Count();
+            }
+            else ViewBag.Count = 0;
 
             return View(model);
         }

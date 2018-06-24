@@ -135,11 +135,19 @@
 
                                     <!-- Product Description -->
                                     <div class="product-description">
-                                        
+                                        @if (item.SOLUONG > 0)
+                                        {
+                                         <span>Còn hàng</span>
+                                        }
+                                        @if (item.SOLUONG <= 0)
+                                        {
+                                            <span>Hết hàng</span> 
+                                        }
+
                                         <a href="/SanPham/ChiTietSP/@item.MASP">
                                             <h6>@item.TENSP</h6>
                                         </a>
-                                        <p class="product-price"><span class="old-price">$75.00</span> @item.GIA</p>
+                                        <p class="product-price"><span class="old-price">@item.GIA</span> @(item.GIA-item.GIA*item.GIAMGIA/100)</p>
 
                                         <!-- Hover Content -->
                                         <div class="hover-content">

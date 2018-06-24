@@ -27,9 +27,7 @@ namespace KucKuStore.Controllers
             if (cart != null)
             {
                 //ViewBag.list = cart.Lines.ToList();
-                //ViewBag.Count = cart.Lines.Count();
-                TempData["CountBag"] = ViewBag.Count;
-                TempData.Keep("CountBag");
+                ViewBag.Count = cart.Lines.Count();
                 ViewBag.TongTien = cart.ComputeTotalValue();
 
                 if (cart.Lines != null)
@@ -71,12 +69,125 @@ namespace KucKuStore.Controllers
 
             return Redirect(returnURL);
         } 
+        //Xóa 1 sản phẩm
+        public ActionResult RemoveLine(int id)
+        {
+            var product = new SANPHAMF().FindEntity(id);
+            var cart = (Cart)Session[CartSession];
+            if (cart != null)
+            {
+                cart.RemoveLine(product);
+                Session[CartSession] = cart;
+            }
+            return RedirectToAction("GioHang");
+            
+        }
+        public ActionResult Clear()     //Xóa đơn hàng
+        {
+            var cart = (Cart)Session[CartSession];
+            cart.Clear();
+            Session[CartSession] = cart;
+            return RedirectToAction("GioHang");
+        }
+        public ActionResult UpdateCart(int id,FormCollection fr)
+        {
+            var product = new SANPHAMF().FindEntity(id);
+            var cart = (Cart)Session[CartSession];
+            if (cart != null)
+            {
+                int sl = int.Parse(fr["txtQuantity"].ToString());
+                cart.UpdateItem(product, sl);
+                Session[CartSession] = cart;
+            }
+            else
+            {
+                cart = new Cart();
+                cart.AddItem(product, 1);
+                Session[CartSession] = cart;
+            }
+            return RedirectToAction("GioHang");
+        }
+        [HttpGet]
         public ActionResult ThanhToan()
         {
             ViewBag.DANHMUC1 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("A")).ToList();
             ViewBag.DANHMUC2 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("Q")).ToList();
             ViewBag.DANHMUC3 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("V")).ToList();
             ViewBag.DANHMUC4 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("PK")).ToList();
+
+            var cart = (Cart)Session[CartSession];
+            var list = new List<CartItem>();
+            if(cart !=null)
+            {
+                list = cart.Lines.ToList();
+                ViewBag.TongTien = cart.ComputeTotalValue();
+                ViewBag.Count = cart.Lines.Count();
+            }
+            else
+            {
+                ViewBag.TongTien = 0;
+                ViewBag.Count = 0;
+            }
+
+            return View(list.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult ThanhToan([Bind(Include ="MADH,TENKH,DIACHI,DIENTHOAI,EMAIL,TRANGTHAI,NGAYTAO,GHICHU")] DONHANG donhang ,string tenkh, string diachi, string sdt, string email, string ghichu,bool trangthai)
+        {
+            donhang.TENKH = tenkh;
+            donhang.DIACHI = diachi;
+            donhang.DIENTHOAI = sdt;
+            donhang.EMAIL = email;
+            donhang.TRANGTHAI = trangthai;
+            donhang.NGAYTAO = DateTime.Now;
+            donhang.GHICHU = ghichu;
+
+            var cart = (Cart)Session[CartSession];
+            decimal tong = 0;
+            try
+            {
+                if (cart != null)
+                {
+                    if(ModelState.IsValid)
+                    {
+                        db.DONHANGs.Add(donhang);
+                        db.SaveChanges();
+                        var ID = (from x in db.DONHANGs orderby x.MADH descending select x.MADH).Take(1).Single();
+                        foreach (var item in cart.Lines)
+                        {
+                            var CTDonHang = new CTDONHANG();
+                            CTDonHang.MASP = item.SANPHAM.MASP;
+                            CTDonHang.MADH = ID;
+                            CTDonHang.GIA = item.SANPHAM.GIA - item.SANPHAM.GIAMGIA * item.SANPHAM.GIA / 100;
+                            CTDonHang.SL = item.Quantity;
+
+                            db.CTDONHANGs.Add(CTDonHang);
+                            tong += (item.SANPHAM.GIA - item.SANPHAM.GIAMGIA * item.SANPHAM.GIA / 100).GetValueOrDefault(0) * item.Quantity;
+                            db.SaveChanges();
+                        }
+                    }
+                }
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var errorMessages = ex.EntityValidationErrors.SelectMany(x => x.ValidationErrors).Select(x => x.ErrorMessage);
+                var fullErrorMessages = string.Join(";", errorMessages);
+                var exceptionMessages = string.Concat(ex.Message, "The validation errors are: ", fullErrorMessages);
+                throw new DbEntityValidationException(exceptionMessages, ex.EntityValidationErrors);
+            }
+
+            return RedirectToAction("Index","Home");
+        }
+        public ActionResult ThanhCong()
+        {
+            ViewBag.DANHMUC1 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("A")).ToList();
+            ViewBag.DANHMUC2 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("Q")).ToList();
+            ViewBag.DANHMUC3 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("V")).ToList();
+            ViewBag.DANHMUC4 = new DANHMUCF().DanhMUcs.Where(x => x.MADM.Contains("PK")).ToList();
+
+            var cart = (Cart)Session[CartSession];
+            ViewBag.Count = cart.Lines.Count();
             return View();
         }
     }

@@ -8,7 +8,7 @@ namespace KucKuStore.Models.Entities
     public partial class DbContent : DbContext
     {
         public DbContent()
-            : base("name=DbContent")
+            : base("name=DbContent12")
         {
         }
 
@@ -18,7 +18,6 @@ namespace KucKuStore.Models.Entities
         public virtual DbSet<KHUYENMAI> KHUYENMAIs { get; set; }
         public virtual DbSet<LIENHE> LIENHEs { get; set; }
         public virtual DbSet<NGUOIDUNG> NGUOIDUNGs { get; set; }
-        public virtual DbSet<NHACC> NHACCs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -61,12 +60,8 @@ namespace KucKuStore.Models.Entities
                 .IsFixedLength();
 
             modelBuilder.Entity<NGUOIDUNG>()
-                .Property(e => e.MAIL)
+                .Property(e => e.EMAIL)
                 .IsFixedLength();
-
-            modelBuilder.Entity<NHACC>()
-                .Property(e => e.SDT)
-                .IsUnicode(false);
 
             modelBuilder.Entity<SANPHAM>()
                 .Property(e => e.MADM)

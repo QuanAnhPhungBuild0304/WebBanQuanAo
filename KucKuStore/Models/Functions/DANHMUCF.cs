@@ -25,9 +25,9 @@ namespace KucKuStore.Models.Functions
             return context.DANHMUCs.Where(x => x.MADM.Contains(id)).ToList();
         }
         // Trả về một đối tượng danh mục, khi biết Khóa
-        public DANHMUC FindEntity(string MaSP)
+        public DANHMUC FindEntity(string MaDM)
         {
-            DANHMUC dbEntry = context.DANHMUCs.Find(MaSP);
+            DANHMUC dbEntry = context.DANHMUCs.Find(MaDM);
             return dbEntry;
         }
     }

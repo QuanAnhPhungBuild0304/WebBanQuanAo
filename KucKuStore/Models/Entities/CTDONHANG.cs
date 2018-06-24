@@ -9,17 +9,15 @@ namespace KucKuStore.Models.Entities
     [Table("CTDONHANG")]
     public partial class CTDONHANG
     {
-        [Key]
-        [Column(Order = 0)]
-        public int MACT { get; set; }
+        
 
         [Key]
-        [Column(Order = 1)]
+        [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int MADH { get; set; }
 
         [Key]
-        [Column(Order = 2)]
+        [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int MASP { get; set; }
 

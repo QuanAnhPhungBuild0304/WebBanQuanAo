@@ -96,6 +96,10 @@
                                 <img src="/Content/img/product-img/@item.HINHANH" alt="">
                                 <!-- Hover Thumb -->
                                 <img class="hover-img" src="/Content/img/product-img/@item.HINHANHKHAC" alt="">
+                                <!-- Product Badge -->
+                                <div class="product-badge offer-badge">
+                                    <span>-@item.GIAMGIA %</span>
+                                </div>
                                 <!-- Favourite -->
                                 <div class="product-favourite">
                                     <a href="#" class="favme fa fa-heart"></a>
@@ -107,8 +111,7 @@
                                 <a href="/SanPham/ChiTietSP/@item.MASP">
                                     <h6>@item.TENSP</h6>
                                 </a>
-                                <p class="product-price">@item.GIA</p>
-
+                                <p class="product-price"><span class="old-price">@item.GIA</span> @(item.GIA - item.GIA * item.GIAMGIA / 100)</p>
                                 <!-- Hover Content -->
                                 <div class="hover-content">
                                     <!-- Add to Cart -->

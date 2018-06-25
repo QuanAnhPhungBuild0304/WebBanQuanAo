@@ -27,9 +27,12 @@ namespace KucKuStore.Controllers
             {
                 ViewBag.list = cart.Lines.ToList();
                 ViewBag.Count = cart.Lines.Count();
-                TempData["CountBag"] = ViewBag.Count;
-                TempData.Keep("CountBag");
                 ViewBag.TongTien = cart.ComputeTotalValue();
+            }
+            else
+            {
+                ViewBag.TongTien = 0;
+                ViewBag.Count = 0;
             }
             return View(model);
         }

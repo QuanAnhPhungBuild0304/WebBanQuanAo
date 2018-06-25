@@ -50,11 +50,7 @@
        
         public string HINHANH { get; set; }
 
-        [Column(TypeName = "xml")]
-        [Display(Name = "Hình ảnh khác")]
-     
-        public string HINHANHKHAC { get; set; }
-
+       
         [Display(Name = "Số lượng")]
         // validate check cho hệ thống.
         [Required(ErrorMessage = "Không để trống")]

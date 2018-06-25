@@ -61,18 +61,6 @@
 
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.HINHANHKHAC, htmlAttributes: new { @class = "control-label col-md-3" })
-        <div class="col-md-10">
-            @*name thẻ input file phải == ten vs tham so ben controller*@
-            <input type="file" name="fileanh" class="form-control">
-            @*Thông báo khi chọn ảnh đã có trong thư mục ảnh trên server rồi*@
-            @ViewBag.ThongBao
-
-        </div>
-    </div>
-
     <div class="form-group">
         @Html.LabelFor(model => model.SOLUONG, htmlAttributes: new { @class = "control-label col-md-3" })
         <div class="col-md-10">
@@ -99,6 +87,8 @@
         @Html.LabelFor(model => model.CHITIET, htmlAttributes: new { @class = "control-label col-md-3" })
         <div class="col-md-10">
             <textarea>Mô tả!</textarea>
+            @*@Html.EditorFor(model => model.CHITIET, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CHITIET, "", new { @class = "text-danger" })*@
         </div>
     </div>
 

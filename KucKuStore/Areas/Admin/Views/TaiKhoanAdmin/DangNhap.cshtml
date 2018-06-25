@@ -24,7 +24,7 @@
     
 </head>
 <body class="bg-dark">
-    <h1>@ViewBag.ThongBao</h1>
+
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
@@ -34,19 +34,28 @@
                     </a>
                 </div>
                 <div class="login-form">
-                    <form>
-                        <div class="form-group">
-                            <label>Tên đăng nhập</label>
-                            <input id ="txbTenDN" class="form-control" placeholder="Username">
-                        </div>
-                        <div class="form-group">
-                            <label>Mật khẩu</label>
-                            <input type="password"  id ="txbMK" class="form-control" placeholder="Password">
-                        </div>
-                       
-                        <button type="submit" id ="btnLogin" class="btn btn-success btn-flat m-b-30 m-t-30">Đăng nhập</button>
-                    </form>
+                    <div style="color: red">
+                       <h3> @ViewBag.ThongBao</h3>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        <form action="#">
+                            <div class="form-group">
+                                <label>Tên đăng nhập</label>
+                                <input id="txbTenDN" name="username" class="form-control" placeholder="Username">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Mật khẩu</label>
+                                <input type="password" name="pass" id="txbMK" class="form-control" placeholder="Password">
+                            </div>
+
+                            <button type="submit" id="btnLogin" class="btn btn-success btn-flat m-b-30 m-t-30">Đăng nhập</button>
+                        </form>
+                    }
+
                 </div>
+
             </div>
         </div>
     </div>

@@ -28,7 +28,7 @@
     @*Chèn css font kí tự*@
     <link href="~/Areas/Admin/Content/fontawesome-free-5.1.0-web/css/v4-shims.min.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Content/fontawesome-free-5.1.0-web/css/fontawesome.css" rel="stylesheet" />
-
+    <link href="~/Areas/Admin/Content/assets/css/AnhQuan.css" rel="stylesheet" />
     @*chèn scripEditor*@
     <script src="~/Areas/Admin/Content/tinymce_4.7.13/tinymce/js/tinymce/tinymce.min.js"></script>
     <script>tinymce.init({ selector: 'textarea' });</script>
@@ -50,7 +50,7 @@
                     <h3 class="menu-title">CÁC BẢNG TRONG CSDL</h3><!-- /.menu-title -->
 
                     <li class="menu-item-has-children ">
-                        <a href="@Url.Action("Index","TaiKhoanAdmin")"> <i class="fas fa-user-circle"></i> Tài Khoản</></a>
+                        <a href="@Url.Action("Index","TaiKhoanAdmin")"> <i class="menu-icon fa fa-table"></i> Tài Khoản</></a>
                         <a href="@Url.Action("Index","NhaCCAdmin")"> <i class="menu-icon fa fa-table"></i> Nhà Cung Cấp</></a>
                         <a href="@Url.Action("Index","DanhMucAdmin")"> <i class="menu-icon fa fa-table"></i> Danh Mục</></a>
                         <a href="@Url.Action("Index","SanPhamAdmin")"> <i class="menu-icon fa fa-table"></i> Sản Phẩm</></a>
@@ -159,7 +159,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="~/Areas/Admin/Content/images/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="~/Areas/Admin/Content/images/DSC_0962.jpg" alt="User Avatar">
                         </a>
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
@@ -170,30 +170,14 @@
                     </div>
                     <div class="language-select dropdown" id="language-select">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="language" aria-haspopup="true" aria-expanded="true">
-                            <i class="flag-icon flag-icon-us"></i>
+                            <i class="flag-icon flag-icon-vn"></i>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="language">
-                            <div class="dropdown-item">
-                                <span class="flag-icon flag-icon-fr"></span>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-es"></i>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-us"></i>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-it"></i>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </header><!-- /header -->
         <!-- Header-->
-        <div class="breadcrumbs">
-
-        </div>
         <div class="content mt-3">
             @RenderBody()
 

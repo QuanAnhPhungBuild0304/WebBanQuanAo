@@ -33,13 +33,13 @@ namespace KucKuStore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(SANPHAM sp, HttpPostedFileBase fileanh, HttpPostedFileBase fileanhkhac)
+        public ActionResult Create(SANPHAM sp, HttpPostedFileBase fileanh)
         {
 
             ViewBag.MADM = new SelectList(db.DANHMUCs.ToList().OrderBy(n => n.TENDM), "MADM", "TENDM");
             ViewBag.MANCC = new SelectList(db.NHACCs.ToList().OrderBy(n => n.TENNCC), "MANCC", "TENNCC");
 
-            if (fileanh == null || fileanhkhac == null)
+            if (fileanh == null)
             {
                 ViewBag.ThongBao = "Chọn ảnh!";
                 return View();
@@ -48,31 +48,31 @@ namespace KucKuStore.Areas.Admin.Controllers
             {
                 //lưu tên file
                 var filename = Path.GetFileName(fileanh.FileName);
-                var filenamekhac = Path.GetFileName(fileanhkhac.FileName);
+             
                 //lưu đường dẫn của file
                 var path = Path.Combine(Server.MapPath("~/Content/img/product-img"), filename);
-                var pathkhac = Path.Combine(Server.MapPath("~/Content/img/product-img"), filenamekhac);
+               
                 //kiểm tra hình ảnh dã tồn tại chưa
-                if (System.IO.File.Exists(path) || System.IO.File.Exists(pathkhac))
+                if (System.IO.File.Exists(path))
                 {
                     ViewBag.ThongBao = "Đã tồn tại hình ảnh";
                 }
                 else
                 {
                     fileanh.SaveAs(path);
-                    fileanh.SaveAs(pathkhac);
+                   
                 }
                 sp.HINHANH = fileanh.FileName;
-                sp.HINHANHKHAC = fileanhkhac.FileName;
+               
                 db.SANPHAMs.Add(sp);
                 db.SaveChanges();
             }
-            return View();
+            return RedirectToAction("Index");
         }
 
 
         [HttpGet]
-        public ActionResult Edit(int MASP)
+        public  ActionResult Edit(int MASP)
         {
             // lấy ra đt sp theo mã
             SANPHAM sp = db.SANPHAMs.SingleOrDefault(n => n.MASP == MASP);
@@ -89,10 +89,10 @@ namespace KucKuStore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(SANPHAM sp, HttpPostedFileBase fileanh, HttpPostedFileBase fileanhkhac)
+        public ActionResult Edit(SANPHAM sp, HttpPostedFileBase fileanh)
         {
 
-            if (fileanh == null || fileanhkhac == null)
+            if (fileanh == null )
             {
                 ViewBag.ThongBao = "Chọn ảnh!";
                 return View();
@@ -101,22 +101,22 @@ namespace KucKuStore.Areas.Admin.Controllers
             {
                 //lưu tên file
                 var filename = Path.GetFileName(fileanh.FileName);
-                var filenamekhac = Path.GetFileName(fileanhkhac.FileName);
+               
                 //lưu đường dẫn của file
                 var path = Path.Combine(Server.MapPath("~/Content/img/product-img"), filename);
-                var pathkhac = Path.Combine(Server.MapPath("~/Content/img/product-img"), filenamekhac);
+            
                 //kiểm tra hình ảnh dã tồn tại chưa
-                if (System.IO.File.Exists(path) || System.IO.File.Exists(pathkhac))
+                if (System.IO.File.Exists(path))
                 {
                     ViewBag.ThongBao = "Đã tồn tại hình ảnh";
                 }
                 else
                 {
                     fileanh.SaveAs(path);
-                    fileanh.SaveAs(pathkhac);
+                  
                 }
                 sp.HINHANH = fileanh.FileName;
-                sp.HINHANHKHAC = fileanhkhac.FileName;
+             
                 // cập nhật thay đổi vào model
                 db.Entry(sp).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();

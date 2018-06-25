@@ -39,30 +39,31 @@ namespace KucKuStore.Areas.Admin.Controllers
                 // lưu vào csdl
                 db.SaveChanges();
             }
-            
-            return View();
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult DangNhap()
         {
             return View();
         }
+
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult DangNhap(FormCollection f)
         {
-            string sUsername = f["txbTenDN"].ToString();
-            string sMK = f.Get("txbMK").ToString();
+            string sUsername = f["username"].ToString();
+            string sMK = f.Get("pass").ToString();
             NGUOIDUNG ng = db.NGUOIDUNGs.SingleOrDefault(n => n.TENDN == sUsername && n.MATKHAU == sMK);
 
             if(ng != null)
             {
-                ViewBag.ThongBao = "Thành công";
+               
                 Session["taikhoan"] = ng; // gán session là cẩ đối tượng ng
                 //return View("Index","SanPhamAdmin");
-                return View();
+                return RedirectToAction("Index");
             }
-            ViewBag.ThongBao = "Sai";
-            return View();
+            ViewBag.ThongBao = "Đăng nhập sai! Vui lòng kiểm tra lại.";
+            return View("DangNhap");
             
         }
     }

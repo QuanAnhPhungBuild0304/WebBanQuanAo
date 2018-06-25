@@ -183,6 +183,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Content\assets\css\AnhQuan.css" />
     <Content Include="Areas\Admin\Content\assets\css\animate.css" />
     <Content Include="Areas\Admin\Content\assets\css\bootstrap-select.css" />
     <Content Include="Areas\Admin\Content\assets\css\bootstrap.css" />
@@ -1574,13 +1575,13 @@
     <Content Include="Areas\Admin\Content\fontawesome-free-5.1.0-web\webfonts\fa-regular-400.svg" />
     <Content Include="Areas\Admin\Content\fontawesome-free-5.1.0-web\webfonts\fa-solid-900.svg" />
     <Content Include="Areas\Admin\Content\images\1.jpg" />
-    <Content Include="Areas\Admin\Content\images\admin.jpg" />
     <Content Include="Areas\Admin\Content\images\avatar\1.jpg" />
     <Content Include="Areas\Admin\Content\images\avatar\2.jpg" />
     <Content Include="Areas\Admin\Content\images\avatar\3.jpg" />
     <Content Include="Areas\Admin\Content\images\avatar\4.jpg" />
     <Content Include="Areas\Admin\Content\images\avatar\5.jpg" />
     <Content Include="Areas\Admin\Content\images\avatar\6.jpg" />
+    <Content Include="Areas\Admin\Content\images\DSC_0962.jpg" />
     <Content Include="Areas\Admin\Content\images\flags\1x1\ad.svg" />
     <Content Include="Areas\Admin\Content\images\flags\1x1\ae.svg" />
     <Content Include="Areas\Admin\Content\images\flags\1x1\af.svg" />
